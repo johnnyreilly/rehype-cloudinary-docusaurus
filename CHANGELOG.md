@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.1.2](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.1.1...0.1.2) (2022-12-24)
+
+### Bug Fixes
+
+- build prior to release and ignore src when publishing ([a2bebf2](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/commit/a2bebf2bc5f4eed62a47f8f83e1bbd07c91e983e))
+
 ### [0.1.1](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.1.0...0.1.1) (2022-12-24)
 
 ### Bug Fixes
