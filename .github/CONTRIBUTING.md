@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in contributing to `template-typescript-node-package`! 💖
+Thanks for your interest in contributing to `remark-cloudinary-docusaurus`! 💖
 
 > See [DEVELOPMENT.md](./DEVELOPMENT.md) for local development instructions.
 
@@ -10,7 +10,7 @@ This project contains a [Contributor Covenant code of conduct](./CODE_OF_CONDUCT
 
 ## Reporting Issues
 
-Please do [report an issue on the issue tracker](https://github.com/JoshuaKGoldberg/template-typescript-node-package/issues/new/choose) if there's any bugfix, documentation improvement, or general enhancement you'd like to see in the repository! Please fully fill out all required fields in the most appropriate issue form.
+Please do [report an issue on the issue tracker](https://github.com/johnnyreilly/template-typescript-node-package/issues/new/choose) if there's any bugfix, documentation improvement, or general enhancement you'd like to see in the repository! Please fully fill out all required fields in the most appropriate issue form.
 
 ## Sending Contributions
 

@@ -1,2 +1,3 @@
-export * from "./greet.js";
-export * from "./types.js";
+import { imageCloudinaryRemarkPluginFactory } from "./plugin";
+
+export = imageCloudinaryRemarkPluginFactory;
