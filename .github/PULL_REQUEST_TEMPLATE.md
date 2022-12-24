@@ -6,7 +6,7 @@ Otherwise we may not be able to review your PR. -->
 
 - [ ] Addresses an existing open issue: fixes #000
 - [ ] That issue was marked as [accepting prs](https://github.com/johnnyreilly/template-typescript-node-package/issues?q=is%3Aopen+is%3Aissue+label%3A%22accepting+prs%22)
-- [ ] Steps in [CONTRIBUTING.md](https://github.com/JoshuaKGoldberg/template-typescript-node-package/blob/main/.github/CONTRIBUTING.md) were taken
+- [ ] Steps in [CONTRIBUTING.md](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/blob/main/.github/CONTRIBUTING.md) were taken
 
 ## Overview
 

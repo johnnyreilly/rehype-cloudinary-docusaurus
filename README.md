@@ -67,8 +67,6 @@ Thanks! ❤️🌻
 ## Contributors
 
 <!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- spellchecker: disable -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -77,8 +75,6 @@ Thanks! ❤️🌻
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-<!-- spellchecker: enable -->
-<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- You can remove this notice if you don't want it 🙂 no worries! -->

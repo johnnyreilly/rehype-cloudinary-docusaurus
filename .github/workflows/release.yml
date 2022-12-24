@@ -42,10 +42,10 @@ jobs:
           github-token: ${{ secrets.ACCESS_TOKEN }}
           # Note: keep this inline script in sync with script/setup.js!
           # Todo: it would be nice to not have two sources of truth...
-          # https://github.com/JoshuaKGoldberg/template-typescript-node-package/issues/145
+          # https://github.com/johnnyreilly/remark-cloudinary-docusaurus/issues/145
           script: |
             github.request(
-              `PUT /repos/JoshuaKGoldberg/template-typescript-node-package/branches/main/protection`,
+              `PUT /repos/johnnyreilly/remark-cloudinary-docusaurus/branches/main/protection`,
               {
                 allow_deletions: false,
                 allow_force_pushes: true,
@@ -64,12 +64,9 @@ jobs:
                     { context: "build" },
                     { context: "compliance" },
                     { context: "lint" },
-                    { context: "markdown" },
                     { context: "package" },
                     { context: "packages" },
                     { context: "prettier" },
-                    { context: "prune" },
-                    { context: "spelling" },
                     { context: "test" },
                   ],
                   strict: false,
