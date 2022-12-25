@@ -3,6 +3,15 @@
 <p align="center">Cloudinary offers an image CDN which can improve performance of your site. This plugin allows Docusaurus to use Cloudinary to serve optimised images.</p>
 
 <p align="center">
+	<a href="https://www.npmjs.com/package/remark-cloudinary-docusaurus" target="_blank">
+		<img alt="remark-cloudinary-docusaurus version on npm" src="https://img.shields.io/npm/v/remark-cloudinary-docusaurus.svg" />
+	</a>
+	<a href="https://img.shields.io/npm/dm/remark-cloudinary-docusaurus.svg" target="_blank">
+		<img alt="Downloads on npm" src="https://img.shields.io/npm/dm/remark-cloudinary-docusaurus.svg" />
+	</a>
+	<a href="https://github.com/johnnyreilly/remark-cloudinary-docusaurus/actions/workflows/build.yml" target="_blank">
+		<img alt="Build" src="https://github.com/johnnyreilly/remark-cloudinary-docusaurus/actions/workflows/build.yml/badge.svg" />
+	</a>
 	<a href="https://github.com/johnnyreilly/remark-cloudinary-docusaurus/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank">
 		<img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" />
 	</a>
@@ -42,7 +51,10 @@ const config = {
 				blog: {
 					// ...
 					rehypePlugins: [
-						remarkCloudinaryDocusaurus({ cloudName: "demo", baseUrl: url }),
+						remarkCloudinaryDocusaurus({
+							cloudName: "demo",
+							baseUrl: url,
+						}),
 					],
 					// ...
 				},
