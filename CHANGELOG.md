@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.1.2...0.2.0) (2022-12-25)
+
+### Features
+
+- make dependencies, peerDependencies ([016e235](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/commit/016e23580807f9662a8320018b78357ef9e6fdab))
+
 ### [0.1.2](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.1.1...0.1.2) (2022-12-24)
 
 ### Bug Fixes
