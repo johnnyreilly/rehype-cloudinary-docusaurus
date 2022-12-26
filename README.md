@@ -51,10 +51,13 @@ const config = {
 				blog: {
 					// ...
 					rehypePlugins: [
-						remarkCloudinaryDocusaurus({
-							cloudName: "demo",
-							baseUrl: url,
-						}),
+						[
+							docusaurusCloudinaryRemarkPlugin,
+							{
+								cloudName: "demo",
+								baseUrl: url,
+							},
+						],
 					],
 					// ...
 				},
