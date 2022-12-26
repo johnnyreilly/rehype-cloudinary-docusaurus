@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.0](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.2.2...1.0.0) (2022-12-26)
+
+### ⚠ BREAKING CHANGES
+
+- correct API
+
+### Bug Fixes
+
+- API now standard ([#2](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/issues/2)) ([61eae7c](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/commit/61eae7cccc97e230dec1abbef74525fa91cfb91b))
+
 ### [0.2.2](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.2.1...0.2.2) (2022-12-26)
 
 ### [0.2.1](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.2.0...0.2.1) (2022-12-25)
