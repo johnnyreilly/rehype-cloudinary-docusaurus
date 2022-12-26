@@ -68,7 +68,7 @@ const config = {
 
 _Note:_ [as is standard for Docusaurus Remark plugins at present](https://docusaurus.io/docs/markdown-features/plugins#installing-plugins), this is a commonjs module.
 
-See this package in action on: <https://blog.johnnyreilly.com>
+See this package in action on: <https://blog.johnnyreilly.com> - the source code can be found here: <https://github.com/johnnyreilly/blog.johnnyreilly.com>. To read more on how this plugin came to be, see [this blog post](https://blog.johnnyreilly.com/2022/12/26/docusaurus-image-cloudinary-remark-plugin).
 
 ## Development
 
