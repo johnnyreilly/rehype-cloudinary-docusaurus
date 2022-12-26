@@ -1,3 +1,3 @@
-import { imageCloudinaryRemarkPluginFactory } from "./plugin";
+import { imageCloudinaryRemarkPlugin } from "./plugin";
 
-export = imageCloudinaryRemarkPluginFactory;
+export = imageCloudinaryRemarkPlugin;
