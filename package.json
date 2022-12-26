@@ -39,6 +39,14 @@
 	"engines": {
 		"node": ">=18"
 	},
+	"keywords": [
+		"cloudinary",
+		"docusaurus",
+		"markdown",
+		"transform",
+		"remark",
+		"remark-plugin"
+	],
 	"license": "MIT",
 	"lint-staged": {
 		"*": "prettier --ignore-unknown --write"

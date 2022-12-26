@@ -3,28 +3,28 @@ import visit from "unist-util-visit";
 
 import type { ImgOrJsxNodeData } from "./types";
 
+interface Options {
+	baseUrl: string;
+	cloudName: string;
+}
+
 /**
  * Create a remark plugin that will replace image URLs with Cloudinary URLs
  * @param {*} cloudName your Cloudinary’s cloud name eg demo
  * @param {*} baseUrl the base URL of your website eg https://blog.johnnyreilly.com - should not include a trailing slash, will likely be the same as the config.url in your docusaurus.config.js
  * @returns remark plugin that will replace image URLs with Cloudinary URLs
  */
-export function imageCloudinaryRemarkPluginFactory({
+export function imageCloudinaryRemarkPlugin({
 	cloudName,
 	baseUrl,
-}: {
-	baseUrl: string;
-	cloudName: string;
-}) {
+}: Options): Transformer {
 	const imageCloudinaryRemarkVisitor = imageCloudinaryRemarkVisitorFactory({
 		cloudName,
 		baseUrl,
 	});
 
-	return function imageCloudinaryRemarkPlugin(): Transformer {
-		return (tree) => {
-			visit(tree, ["element", "jsx"], imageCloudinaryRemarkVisitor);
-		};
+	return (tree) => {
+		visit(tree, ["element", "jsx"], imageCloudinaryRemarkVisitor);
 	};
 }
 
@@ -37,10 +37,7 @@ export function imageCloudinaryRemarkPluginFactory({
 export function imageCloudinaryRemarkVisitorFactory({
 	cloudName,
 	baseUrl,
-}: {
-	baseUrl: string;
-	cloudName: string;
-}) {
+}: Options) {
 	const srcRegex = / src=\{(.*)\}/;
 
 	return function imageCloudinaryRemarkVisitor(node: ImgOrJsxNodeData) {

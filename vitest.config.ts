@@ -6,6 +6,7 @@ export default defineConfig({
 		coverage: {
 			all: true,
 			include: ["src"],
+			exclude: ["lib"],
 			reporter: ["html", "lcov"],
 
 			// c8 reports types-only lines as uncovered
