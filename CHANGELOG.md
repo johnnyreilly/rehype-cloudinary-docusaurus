@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.0](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/1.0.0...1.1.0) (2023-01-02)
+
+### Features
+
+- documentation for url-loader deactivation ([#4](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/issues/4)) ([8b8fe83](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/commit/8b8fe836550095730920cc74dc5558513ca5a1a8))
+
 ## [1.0.0](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/0.2.2...1.0.0) (2022-12-26)
 
 ### ⚠ BREAKING CHANGES
