@@ -71,6 +71,12 @@ const config = {
 
 _Note:_ [as is standard for Docusaurus Remark plugins at present](https://docusaurus.io/docs/markdown-features/plugins#installing-plugins), this is a commonjs module.
 
+You will also need to disable the `url-loader` in your Docusaurus build which transforms images into base64 strings, as this will conflict with the plugin. [There isn't a first class way to do this in Docusaurus at present](https://github.com/facebook/docusaurus/pull/5498). However by setting the environment variable `WEBPACK_URL_LOADER_LIMIT` to `0` you can disable it. [You can see an implementation example in this pull request](https://github.com/johnnyreilly/blog.johnnyreilly.com/pull/397). It amounts to adding the [`cross-env`](https://github.com/kentcdodds/cross-env) package and then adding the following to your `package.json`:
+
+```json
+	"build": "cross-env WEBPACK_URL_LOADER_LIMIT=0 docusaurus build",
+```
+
 See this package in action on: <https://blog.johnnyreilly.com> - the source code can be found here: <https://github.com/johnnyreilly/blog.johnnyreilly.com>. To read more on how this plugin came to be, see [this blog post](https://blog.johnnyreilly.com/2022/12/26/docusaurus-image-cloudinary-remark-plugin).
 
 ## Development
