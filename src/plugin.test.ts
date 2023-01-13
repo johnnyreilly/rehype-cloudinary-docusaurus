@@ -20,7 +20,7 @@ describe("imageCloudinaryRemarkVisitorFactory", () => {
 		imageCloudinaryRemarkVisitor(node);
 
 		expect(node.properties.src).toBe(
-			"https://res.cloudinary.com/demo/image/fetch/https://some.website.com/cat.gif"
+			"https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://some.website.com/cat.gif"
 		);
 	});
 
@@ -38,7 +38,7 @@ describe("imageCloudinaryRemarkVisitorFactory", () => {
 		imageCloudinaryRemarkVisitor(node);
 
 		expect(node.value).toBe(
-			'<img src={`https://res.cloudinary.com/demo/image/fetch/https://blog.johnnyreilly.com${require("!/workspaces/blog.johnnyreilly.com/blog-website/node_modules/url-loader/dist/cjs.js?limit=10000&name=assets/images/[name]-[hash].[ext]&fallback=/workspaces/blog.johnnyreilly.com/blog-website/node_modules/file-loader/dist/cjs.js!./bower-with-the-long-paths.png").default}`} width="640" height="497" />'
+			'<img src={`https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://blog.johnnyreilly.com${require("!/workspaces/blog.johnnyreilly.com/blog-website/node_modules/url-loader/dist/cjs.js?limit=10000&name=assets/images/[name]-[hash].[ext]&fallback=/workspaces/blog.johnnyreilly.com/blog-website/node_modules/file-loader/dist/cjs.js!./bower-with-the-long-paths.png").default}`} width="640" height="497" />'
 		);
 	});
 });
