@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/1.1.0...1.2.0) (2023-01-13)
+
+### Features
+
+- use f_auto,q_auto ([#5](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/issues/5)) ([6aa6492](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/commit/6aa6492a974d464773fca424057fcfda252e150d))
+
 ## [1.1.0](https://github.com/johnnyreilly/remark-cloudinary-docusaurus/compare/1.0.0...1.1.0) (2023-01-02)
 
 ### Features
