@@ -10,7 +10,7 @@ export default defineConfig({
 			reporter: ["html", "lcov"],
 
 			// c8 reports types-only lines as uncovered
-			// https://github.com/johnnyreilly/remark-cloudinary-docusaurus/issues/100
+			// https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/issues/100
 			provider: "istanbul",
 		},
 	},

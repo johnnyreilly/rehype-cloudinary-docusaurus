@@ -18,7 +18,7 @@
     "README.md"
   ],
   "imageSize": 100,
-  "projectName": "remark-cloudinary-docusaurus",
+  "projectName": "rehype-cloudinary-docusaurus",
   "projectOwner": "johnnyreilly",
   "repoHost": "https://github.com",
   "repoType": "github",

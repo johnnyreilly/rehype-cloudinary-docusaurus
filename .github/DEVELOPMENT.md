@@ -3,7 +3,7 @@
 After [forking the repo from GitHub](https://help.github.com/articles/fork-a-repo) and [installing pnpm](https://pnpm.io/installation):
 
 ```shell
-git clone https://github.com/<your-name-here>/remark-cloudinary-docusaurus
+git clone https://github.com/<your-name-here>/rehype-cloudinary-docusaurus
 cd template-typescript-node-package
 pnpm install
 ```
