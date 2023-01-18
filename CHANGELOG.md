@@ -1,5 +1,11 @@
 # Changelog
 
+### [1.2.1](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/compare/1.2.0...1.2.1) (2023-01-18)
+
+### Bug Fixes
+
+- remark -> rehype rename ([#6](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/issues/6)) ([ab763fa](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/commit/ab763fa88860723a881fc4d54e1b1a333d105e2f))
+
 ## [1.2.0](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/compare/1.1.0...1.2.0) (2023-01-13)
 
 ### Features
