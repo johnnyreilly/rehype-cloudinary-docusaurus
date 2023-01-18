@@ -44,22 +44,22 @@
 		"docusaurus",
 		"markdown",
 		"transform",
-		"remark",
-		"remark-plugin"
+		"rehype",
+		"rehype-plugin"
 	],
 	"license": "MIT",
 	"lint-staged": {
 		"*": "prettier --ignore-unknown --write"
 	},
 	"main": "./lib/index.js",
-	"name": "remark-cloudinary-docusaurus",
+	"name": "rehype-cloudinary-docusaurus",
 	"packageManager": "pnpm@7.18.2",
 	"peerDependencies": {
 		"unist-util-visit": "*"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/johnnyreilly/remark-cloudinary-docusaurus"
+		"url": "https://github.com/johnnyreilly/rehype-cloudinary-docusaurus"
 	},
 	"scripts": {
 		"build": "tsc",

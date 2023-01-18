@@ -1,3 +1,3 @@
-import { imageCloudinaryRemarkPlugin } from "./plugin";
+import { imageCloudinaryRehypePlugin } from "./plugin";
 
-export = imageCloudinaryRemarkPlugin;
+export = imageCloudinaryRehypePlugin;

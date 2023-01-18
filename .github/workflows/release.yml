@@ -26,7 +26,7 @@ jobs:
           script: |
             try {
               await github.request(
-                `DELETE /repos/johnnyreilly/remark-cloudinary-docusaurus/branches/main/protection`,
+                `DELETE /repos/johnnyreilly/rehype-cloudinary-docusaurus/branches/main/protection`,
               );
             } catch (error) {
               if (!error.message?.includes?.("Branch not protected")) {
@@ -43,10 +43,10 @@ jobs:
           github-token: ${{ secrets.ACCESS_TOKEN }}
           # Note: keep this inline script in sync with script/setup.js!
           # Todo: it would be nice to not have two sources of truth...
-          # https://github.com/johnnyreilly/remark-cloudinary-docusaurus/issues/145
+          # https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/issues/145
           script: |
             github.request(
-              `PUT /repos/johnnyreilly/remark-cloudinary-docusaurus/branches/main/protection`,
+              `PUT /repos/johnnyreilly/rehype-cloudinary-docusaurus/branches/main/protection`,
               {
                 allow_deletions: false,
                 allow_force_pushes: true,

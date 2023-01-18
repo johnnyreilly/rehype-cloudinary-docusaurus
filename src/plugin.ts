@@ -9,38 +9,38 @@ interface Options {
 }
 
 /**
- * Create a remark plugin that will replace image URLs with Cloudinary URLs
+ * Create a rehype plugin that will replace image URLs with Cloudinary URLs
  * @param {*} cloudName your Cloudinary’s cloud name eg demo
  * @param {*} baseUrl the base URL of your website eg https://blog.johnnyreilly.com - should not include a trailing slash, will likely be the same as the config.url in your docusaurus.config.js
- * @returns remark plugin that will replace image URLs with Cloudinary URLs
+ * @returns rehype plugin that will replace image URLs with Cloudinary URLs
  */
-export function imageCloudinaryRemarkPlugin({
+export function imageCloudinaryRehypePlugin({
 	cloudName,
 	baseUrl,
 }: Options): Transformer {
-	const imageCloudinaryRemarkVisitor = imageCloudinaryRemarkVisitorFactory({
+	const imageCloudinaryRehypeVisitor = imageCloudinaryRehypeVisitorFactory({
 		cloudName,
 		baseUrl,
 	});
 
 	return (tree) => {
-		visit(tree, ["element", "jsx"], imageCloudinaryRemarkVisitor);
+		visit(tree, ["element", "jsx"], imageCloudinaryRehypeVisitor);
 	};
 }
 
 /**
- * Create a remark visitor that will replace image URLs with Cloudinary URLs - exposed for testing purposes
+ * Create a rehype visitor that will replace image URLs with Cloudinary URLs - exposed for testing purposes
  * @param {*} cloudName your Cloudinary’s cloud name eg demo
  * @param {*} baseUrl the base URL of your website eg https://blog.johnnyreilly.com - should not include a trailing slash, will likely be the same as the config.url in your docusaurus.config.js
- * @returns remark plugin that will replace image URLs with Cloudinary URLs
+ * @returns rehype plugin that will replace image URLs with Cloudinary URLs
  */
-export function imageCloudinaryRemarkVisitorFactory({
+export function imageCloudinaryRehypeVisitorFactory({
 	cloudName,
 	baseUrl,
 }: Options) {
 	const srcRegex = / src=\{(.*)\}/;
 
-	return function imageCloudinaryRemarkVisitor(node: ImgOrJsxNodeData) {
+	return function imageCloudinaryRehypeVisitor(node: ImgOrJsxNodeData) {
 		if (node.type === "element" && node.tagName === "img" && node.properties) {
 			// handles nodes like this:
 			// {
