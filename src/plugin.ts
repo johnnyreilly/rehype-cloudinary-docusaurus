@@ -54,7 +54,7 @@ export function imageCloudinaryRehypeVisitorFactory({
 			// }
 			const url = node.properties.src;
 
-			node.properties.src = `https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto/${url}`;
+			node.properties.src = `https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto,w_auto,dpr_auto/${url}`;
 		} else if (node.type === "jsx" && node.value?.includes("<img ")) {
 			// handles nodes like this:
 			// {
@@ -67,7 +67,7 @@ export function imageCloudinaryRehypeVisitorFactory({
 				node.value = node.value.replace(
 					srcRegex,
 					// eslint-disable-next-line no-useless-escape
-					` src={${`\`https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto/${baseUrl}\$\{${urlOrRequire}\}\``}}`
+					` src={${`\`https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto,w_auto,dpr_auto/${baseUrl}\$\{${urlOrRequire}\}\``}}`
 				);
 			}
 		}
