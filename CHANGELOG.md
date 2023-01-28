@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/compare/1.2.1...1.3.0) (2023-01-28)
+
+### Features
+
+- add w_auto,dpr_auto support ([#7](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/issues/7)) ([ab66673](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/commit/ab66673d826167f6403103fc937b347b30e5381a))
+
 ### [1.2.1](https://github.com/johnnyreilly/rehype-cloudinary-docusaurus/compare/1.2.0...1.2.1) (2023-01-18)
 
 ### Bug Fixes
