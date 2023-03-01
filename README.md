@@ -52,7 +52,7 @@ const config = {
 					// ...
 					rehypePlugins: [
 						[
-							docusaurusCloudinaryRehypePlugin,
+							rehypeCloudinaryDocusaurus,
 							{
 								cloudName: "demo",
 								baseUrl: url,
