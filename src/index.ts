@@ -1,3 +1,3 @@
-import { imageCloudinaryRehypePlugin } from "./plugin";
+import { imageCloudinaryRehypePlugin } from "./plugin.js";
 
-export = imageCloudinaryRehypePlugin;
+export default imageCloudinaryRehypePlugin;
