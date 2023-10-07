@@ -30,7 +30,6 @@ export function imageCloudinaryRehypePlugin({
 	});
 
 	return (tree) => {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		visit(tree, ["mdxJsxTextElement"], imageCloudinaryRehypeVisitor);
 	};
 }
@@ -81,7 +80,6 @@ export function imageCloudinaryRehypeVisitorFactory({
 			);
 			const requireAttribute = imgWithAttributes.attributes[srcIndex].value;
 			if (typeof requireAttribute !== "string") {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument
 				const asMarkdown = toMarkdown(
 					imgWithAttributes as Parameters<typeof toMarkdown>[0],
 					{
