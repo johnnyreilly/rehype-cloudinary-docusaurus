@@ -35,7 +35,7 @@ describe("imageCloudinaryRehypeVisitorFactory", () => {
 			children: [],
 		} as const;
 
-		imageCloudinaryRehypeVisitor(node as Node, null, null);
+		imageCloudinaryRehypeVisitor(node as Node, undefined, undefined);
 
 		expect(node.attributes[1].value.value).toBe(
 			'`https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto,w_auto,dpr_auto/https://johnnyreilly.com${require("!/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/url-loader/dist/cjs.js?limit=10000&name=assets/images/[name]-[contenthash].[ext]&fallback=/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/file-loader/dist/cjs.js!./screenshot-azure-portal-bring-your-own-certificates.webp").default}`'
