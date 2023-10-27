@@ -1,9 +1,15 @@
+import * as acorn from "acorn";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import { mdxJsxFromMarkdown, mdxJsxToMarkdown } from "mdast-util-mdx-jsx";
+import { toMarkdown } from "mdast-util-to-markdown";
+import { type Options, mdxJsx } from "micromark-extension-mdx-jsx";
 import type { Transformer } from "unified";
-import visit from "unist-util-visit";
+import type { Node } from "unist";
+import { type Visitor, visit } from "unist-util-visit";
 
-import type { ImgOrJsxNodeData } from "./types";
+import type { ImgOrJsxNodeData } from "./types.js";
 
-interface Options {
+interface Params {
 	baseUrl: string;
 	cloudName: string;
 }
@@ -17,14 +23,14 @@ interface Options {
 export function imageCloudinaryRehypePlugin({
 	cloudName,
 	baseUrl,
-}: Options): Transformer {
+}: Params): Transformer {
 	const imageCloudinaryRehypeVisitor = imageCloudinaryRehypeVisitorFactory({
 		cloudName,
 		baseUrl,
 	});
 
 	return (tree) => {
-		visit(tree, ["element", "jsx"], imageCloudinaryRehypeVisitor);
+		visit(tree, ["mdxJsxTextElement"], imageCloudinaryRehypeVisitor);
 	};
 }
 
@@ -37,38 +43,91 @@ export function imageCloudinaryRehypePlugin({
 export function imageCloudinaryRehypeVisitorFactory({
 	cloudName,
 	baseUrl,
-}: Options) {
+}: Params): Visitor<Node> {
 	const srcRegex = / src=\{(.*)\}/;
-
-	return function imageCloudinaryRehypeVisitor(node: ImgOrJsxNodeData) {
-		if (node.type === "element" && node.tagName === "img" && node.properties) {
+	return function imageCloudinaryRehypeVisitor(node) {
+		const imgWithAttributes = node as ImgOrJsxNodeData;
+		if (
+			imgWithAttributes.type === "mdxJsxTextElement" &&
+			imgWithAttributes.name === "img"
+		) {
 			// handles nodes like this:
 			// {
-			//   type: 'element',
-			//   tagName: 'img',
-			//   properties: {
-			//     src: 'https://some.website.com/cat.gif',
-			//     alt: null
-			//   },
-			//   ...
+			//   type: 'mdxJsxTextElement',
+			//   name: 'img',
+			//   attributes: [
+			//     {
+			//       type: 'mdxJsxAttribute',
+			//       name: 'alt',
+			//       value: 'title image reading &quot;Azure Container Apps, Bicep, managed certificates and custom domains&quot; with the Azure Container App logos'
+			//     },
+			//     {
+			//       type: 'mdxJsxAttribute',
+			//       name: 'src',
+			//       value: {
+			//         type: 'mdxJsxAttributeValueExpression',
+			//         value: 'require("!/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/url-loader/dist/cjs.js?limit=10000&name=assets/images/[name]-[contenthash].[ext]&fallback=/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/file-loader/dist/cjs.js!./screenshot-azure-portal-bring-your-own-certificates.webp").default',
+			//         data: [Object]
+			//       }
+			//     },
+			//     { type: 'mdxJsxAttribute', name: 'width', value: '800' },
+			//     { type: 'mdxJsxAttribute', name: 'height', value: '450' }
+			//   ],
+			//   children: []
 			// }
-			const url = node.properties.src;
-
-			node.properties.src = `https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto,w_auto,dpr_auto/${url}`;
-		} else if (node.type === "jsx" && node.value?.includes("<img ")) {
-			// handles nodes like this:
-			// {
-			//   type: 'jsx',
-			//   value: '<img src={require("!/workspaces/blog.johnnyreilly.com/blog-website/node_modules/url-loader/dist/cjs.js?limit=10000&name=assets/images/[name]-[hash].[ext]&fallback=/workspaces/blog.johnnyreilly.com/blog-website/node_modules/file-loader/dist/cjs.js!./bower-with-the-long-paths.png").default} width="640" height="497" />'
-			// }
-			const match = node.value.match(srcRegex);
-			if (match) {
-				const urlOrRequire = match[1];
-				node.value = node.value.replace(
-					srcRegex,
-					// eslint-disable-next-line no-useless-escape
-					` src={${`\`https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto,w_auto,dpr_auto/${baseUrl}\$\{${urlOrRequire}\}\``}}`
+			const srcIndex = imgWithAttributes.attributes.findIndex(
+				(attr) => attr.name === "src"
+			);
+			const requireAttribute = imgWithAttributes.attributes[srcIndex].value;
+			if (typeof requireAttribute !== "string") {
+				const asMarkdown = toMarkdown(
+					imgWithAttributes as Parameters<typeof toMarkdown>[0],
+					{
+						extensions: [mdxJsxToMarkdown()],
+					}
 				);
+
+				// <img
+				//    alt="screenshot of typescript playground saying &#39;ComponentThatReturnsANumber&#39; cannot be used as a JSX component. Its return type &#39;number&#39; is not a valid JSX element.(2786)"
+				//    src={require("!/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/url-loader/dist/cjs.js?limit=10000&name=assets/images/[name]-[contenthash].[ext]&fallback=/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/file-loader/dist/cjs.js!./screenshot-typescript-playground.png").default}
+				//    width="690" height="298" />
+
+				const match = asMarkdown.match(srcRegex);
+				if (match) {
+					const urlOrRequire = match[1];
+					// eslint-disable-next-line no-useless-escape
+					const cloudinaryRequireString = `\`https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto,w_auto,dpr_auto/${baseUrl}\$\{${urlOrRequire}\}\``;
+
+					const newMarkdown = asMarkdown.replace(
+						srcRegex,
+						` src={${cloudinaryRequireString}}`
+					);
+
+					// <img
+					//    alt="screenshot of typescript playground saying &#39;ComponentThatReturnsANumber&#39; cannot be used as a JSX component. Its return type &#39;number&#39; is not a valid JSX element.(2786)"
+					//    src={`https://res.cloudinary.com/priou/image/fetch/f_auto,q_auto,w_auto,dpr_auto/https://johnnyreilly.com${require("!/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/url-loader/dist/cjs.js?limit=10000&name=assets/images/[name]-[contenthash].[ext]&fallback=/home/john/code/github/blog.johnnyreilly.com/blog-website/node_modules/file-loader/dist/cjs.js!./screenshot-typescript-playground.png").default}`}
+					//    width="690" height="298" />
+
+					const tree = fromMarkdown(newMarkdown, {
+						extensions: [
+							mdxJsx({
+								acorn: acorn as unknown as Options["acorn"],
+								addResult: true,
+							}),
+						],
+						mdastExtensions: [mdxJsxFromMarkdown()],
+					});
+
+					const newNode = tree.children[0] as ImgOrJsxNodeData;
+					const newSrcAttributeIndex = newNode.attributes.findIndex(
+						(attr) => attr.name === "src"
+					);
+
+					if (newSrcAttributeIndex !== -1) {
+						imgWithAttributes.attributes[srcIndex] =
+							newNode.attributes[newSrcAttributeIndex];
+					}
+				}
 			}
 		}
 	};
